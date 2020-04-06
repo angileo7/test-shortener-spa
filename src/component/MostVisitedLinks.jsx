@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Styled from "styled-components";
-import ReportItem from "./ReportItem";
+import UrlItem from "./UrlItem";
 
 const Wrapper = Styled.div`
     justify-content: center;
@@ -21,27 +21,27 @@ const Container = Styled.div`
     border-radius: 10px;
 `;
 
-const ReportComponent= () => {
-  const [reportData, setReportData] = useState([]);
+const MostVisitedLinksComponent= () => {
+  const [urlsData, setUrlsData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        'http://localhost:3001/users',
+        'http://localhost:3001/urls',
       );
-      setReportData(result.data);
+      setUrlsData(result.data);
     };
     fetchData();
-  }, [reportData]);
+  }, []);
 
   return (
     <>
     <Wrapper>
       <Container>
-      Reporte de sobrepeso
+        Top 100 most frequently accessed URLs
         <hr />
-        {reportData.map((element, index) => (
-          <ReportItem key={index} {...element} />
+        {urlsData.map((element, index) => (
+          <UrlItem key={index} {...element} />
         ))}
       </Container>
     </Wrapper>
@@ -50,4 +50,4 @@ const ReportComponent= () => {
 }
 
 
-export default ReportComponent;
+export default MostVisitedLinksComponent;

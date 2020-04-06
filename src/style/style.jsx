@@ -16,7 +16,7 @@ export const Container = Styled.div`
   
 `;
 
-export const TextSkydropx = Styled.div`
+export const TextUrlShortener = Styled.div`
   text-align: center;
   margin-top: 40px;
   font-size: 50px;
